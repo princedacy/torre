@@ -1,13 +1,16 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faSearch, faRunning, faBiking } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import 'materialize-css'
 import 'materialize-css/dist/css/materialize.css'
-library.add(faBars, faSearch)
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+library.add(faBars, faSearch, faRunning, faBiking)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
 
