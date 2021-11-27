@@ -3,7 +3,7 @@
         <div class="container">
             <div class="bio">
                 <div class="avatar">
-                    <img src="@/assets/logo.png" alt="" srcset="">
+                    <img src="@/assets/images/joseph-gonzalez-iFgRcqHznqg-unsplash.jpg" alt="" srcset="">
                 </div>
                 <div class="names">
                     <h5>Alexander Torrenegra</h5>

@@ -3,6 +3,7 @@
     <Header />
     <Profile />
     <Skills />
+    <SkillDetails/>
   </div>
 </template>
 
@@ -10,12 +11,14 @@
 import Header from "./components/Header.vue";
 import Profile from "./components/Profile.vue";
 import Skills from './components/Skills.vue'
+import SkillDetails from './components/SkillDetails.vue'
 export default {
   name: "App",
   components: {
     Header,
     Profile,
-    Skills
+    Skills,
+    SkillDetails
   },
 };
 </script>
