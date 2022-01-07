@@ -40,7 +40,7 @@
                 <img src="@/assets/images/aiony-haust-3TLl_97HNJo-unsplash.jpg" alt="" class="avatar" />
                 <div class="details">
                   <span class="names"
-                    >Khan Yu <img src="@/assets/images/verified_tick.svg"
+                    >Jane Doe <img src="@/assets/images/verified_tick.svg"
                   /></span>
                   <span class="position">Web developer</span>
                 </div>
@@ -54,7 +54,7 @@
                 <img src="@/assets/images/jurica-koletic-7YVZYZeITc8-unsplash.jpg" alt="" class="avatar" />
                 <div class="details">
                   <span class="names"
-                    >Khan Yu <img src="@/assets/images/verified_tick.svg"
+                    >John Doe <img src="@/assets/images/verified_tick.svg"
                   /></span>
                   <span class="position">Web developer</span>
                 </div>
@@ -66,6 +66,8 @@
           </div>
         </div>
       </div>
+      <div class="page-backdrop">
+      </div>
     </div>
   </section>
 </template>
@@ -74,6 +76,7 @@ export default {
   methods: {
     closeDetails() {
       document.querySelector(".skill-details").style.left = "105%";
+      document.querySelector(".page-backdrop").style.left = "105%";
     },
   },
 };

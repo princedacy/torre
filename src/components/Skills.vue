@@ -12,11 +12,19 @@
                             <h6>Master/Influencer</h6>
                         </div>
                         <div class="skills-list">
-                            <div class="skill-item">
-                                <span @click="getSkillDetails()">Software development</span>
+                            <div class="skill-item" v-for="(exp, index) in experience.master" :key="index">
+                                <span @click="getSkillDetails()">{{exp.name}}</span>
                             </div>
-                            <div class="skill-item">
-                                <span @click="getSkillDetails()">Team management</span>
+                        </div>
+                    </div>
+                    <div class="proficiency">
+                        <div class='proficiency proficiency__title'>
+                            <font-awesome-icon icon="running" />
+                            <h6>Expert</h6>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item" v-for="(exp, index) in experience.expert" :key="index">
+                                <span @click="getSkillDetails()">{{exp.name}}</span>
                             </div>
                         </div>
                     </div>
@@ -26,17 +34,30 @@
                             <h6>Proficient</h6>
                         </div>
                         <div class="skills-list">
-                            <div class="skill-item">
-                                <span @click="getSkillDetails()">Unit testing</span>
+                            <div class="skill-item" v-for="(exp, index) in experience.proficient" :key="index">
+                                <span @click="getSkillDetails()">{{exp.name}}</span>
                             </div>
-                            <div class="skill-item">
-                                <span @click="getSkillDetails()">Data analysis</span>
+                        </div>
+                    </div>
+                    <div class="proficiency">
+                        <div class='proficiency proficiency__title'>
+                            <font-awesome-icon icon="walking" />
+                            <h6>Novice</h6>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item" v-for="(exp, index) in experience.novice" :key="index">
+                                <span @click="getSkillDetails()">{{exp.name}}</span>
                             </div>
-                            <div class="skill-item">
-                                <span @click="getSkillDetails()">Functional programming</span>
-                            </div>
-                            <div class="skill-item">
-                                <span @click="getSkillDetails()">Reactive programming</span>
+                        </div>
+                    </div>
+                    <div class="proficiency">
+                        <div class='proficiency proficiency__title'>
+                            <font-awesome-icon icon="pray" />
+                            <h6>No experience, but interested</h6>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item" v-for="(exp, index) in experience.no_experience_interested" :key="index">
+                                <span @click="getSkillDetails()">{{exp.name}}</span>
                             </div>
                         </div>
                     </div>
@@ -47,13 +68,14 @@
 </template>
 <script>
 export default {
+    props: ['experience'],
     data(){
         return{
 
         }
     },
     mounted(){
-        this.fetchSkills()
+        console.log('exp', this.experience)
     },
     methods:{
         /**
@@ -74,6 +96,7 @@ export default {
          */
         getSkillDetails(){
             document.querySelector(".skill-details").style.left = "0";
+            document.querySelector(".page-backdrop").style.left = "0";
         }
     }
 }
