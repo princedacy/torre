@@ -3,7 +3,7 @@
     <Header />
     <Profile :user='user'/>
     <Skills :experience='experience'/>
-    <SkillDetails/>
+    <SkillDetails :user='user' :experience="experience" :jobs='jobs'/>
   </div>
 </template>
 
@@ -34,8 +34,8 @@ export default {
         proficient: [],
         novice: [],
         no_experience_interested: []
-
-      }
+      },
+      jobs: []
     };
   },
   mounted() {
@@ -59,6 +59,7 @@ export default {
         this.experience.proficient = res.data.strengths.filter((exp)=> exp.proficiency === 'proficient') 
         this.experience.novice = res.data.strengths.filter((exp)=> exp.proficiency === 'novice') 
         this.experience.no_experience_interested = res.data.strengths.filter((exp)=> exp.proficiency === 'no-experience-interested') 
+        this.jobs = res.data.jobs
       } catch (error) {
         return error;
       }
@@ -76,6 +77,6 @@ export default {
   text-align: center;
   color: $torre-light-grey;
   background-color: $torre-dark-grey;
-  height: 100%;
+  height: auto;
 }
 </style>

@@ -218,6 +218,7 @@ $font-size-1: 13px;
                             span {
                                 color: $torre-light-grey-3;
                                 -webkit-text-stroke-width: thin;
+                                text-transform: capitalize;
                             }
                         }
                     }

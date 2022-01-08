@@ -7,7 +7,7 @@
             <font-awesome-icon icon="times" @click="closeDetails()" />
           </div>
           <div class="skill-title">
-            <h3>Software development</h3>
+            <h3>{{skill.name}}</h3>
           </div>
         </div>
         <div class="experience">
@@ -15,22 +15,17 @@
             <div class="single-quali">
               <p>
                 Proficiency: <font-awesome-icon icon="biking" />
-                <span> Master/influencer</span>
+                <span> {{skill.proficiency}}</span>
               </p>
-              <p>Recommendations: <span>7</span></p>
+              <p>Recommendations: <span>{{skill.recommendations}}</span></p>
             </div>
           </div>
           <div class="work-experience">
-            <h6 class="title">Alexander's related experiences:</h6>
-            <div class="work-card">
-              <h6 class="position">Founding Member and Tech Lead</h6>
-              <span>The Executive Company</span>
-              <span>Feb 2015 - Dec 2017</span>
-            </div>
-            <div class="work-card">
-              <h6 class="position">Senior Software Engineer</h6>
-              <span>Testing Inc.</span>
-              <span>Mar 2010 - Jan 2015</span>
+            <h6 class="title">{{user.name}}'s related experiences:</h6>
+            <div class="work-card" v-for="(job, index) in jobs" :key="index">
+              <h6 class="position">{{job.name}}</h6>
+              <span v-for="(pos, index) in job.organizations" :key="index">{{pos.name}}</span>
+              <span><span v-if="job.fromMonth || job.fromYear">{{job.fromMonth}} {{job.fromYear}}</span> - <span v-if="job.toMonth || job.toYear">{{job.toMonth}} {{job.toYear}}</span><span v-else>current</span></span>
             </div>
           </div>
           <div class="people">
@@ -72,7 +67,19 @@
   </section>
 </template>
 <script>
+import {EventBus} from '@/event-bus'
 export default {
+  props: ['user', 'experience', 'jobs'],
+  data(){
+    return {
+      skill: {}
+    }
+  },
+  mounted(){
+    EventBus.$on('opened', payload => {
+      this.skill = payload
+    })
+  },
   methods: {
     closeDetails() {
       document.querySelector(".skill-details").style.left = "105%";

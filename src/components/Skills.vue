@@ -13,7 +13,7 @@
                         </div>
                         <div class="skills-list">
                             <div class="skill-item" v-for="(exp, index) in experience.master" :key="index">
-                                <span @click="getSkillDetails()">{{exp.name}}</span>
+                                <span @click="getSkillDetails(exp)">{{exp.name}}</span>
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                         </div>
                         <div class="skills-list">
                             <div class="skill-item" v-for="(exp, index) in experience.expert" :key="index">
-                                <span @click="getSkillDetails()">{{exp.name}}</span>
+                                <span @click="getSkillDetails(exp)">{{exp.name}}</span>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="skills-list">
                             <div class="skill-item" v-for="(exp, index) in experience.proficient" :key="index">
-                                <span @click="getSkillDetails()">{{exp.name}}</span>
+                                <span @click="getSkillDetails(exp)">{{exp.name}}</span>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="skills-list">
                             <div class="skill-item" v-for="(exp, index) in experience.novice" :key="index">
-                                <span @click="getSkillDetails()">{{exp.name}}</span>
+                                <span @click="getSkillDetails(exp)">{{exp.name}}</span>
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="skills-list">
                             <div class="skill-item" v-for="(exp, index) in experience.no_experience_interested" :key="index">
-                                <span @click="getSkillDetails()">{{exp.name}}</span>
+                                <span @click="getSkillDetails(exp)">{{exp.name}}</span>
                             </div>
                         </div>
                     </div>
@@ -67,6 +67,7 @@
     </section>
 </template>
 <script>
+import {EventBus} from '@/event-bus'
 export default {
     props: ['experience'],
     data(){
@@ -94,7 +95,8 @@ export default {
         /**
          * Get skill details
          */
-        getSkillDetails(){
+        getSkillDetails(exp){
+            EventBus.$emit('opened', exp)
             document.querySelector(".skill-details").style.left = "0";
             document.querySelector(".page-backdrop").style.left = "0";
         }
